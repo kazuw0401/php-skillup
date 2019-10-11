@@ -58,5 +58,5 @@ HOSTNAME：pgsql
 DBNAME：postgres
 USERNAME：postgres
 PASSWORD：example
-PORT:5432
+PORT:5832
 ```
