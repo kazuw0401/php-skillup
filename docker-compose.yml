@@ -16,7 +16,7 @@ services:
     pgsql:
         build: ./pgsql
         ports:
-            - "5832:5832"
+            - "5432:5432"
         volumes:
             - pgsql-data:/var/lib/postgresql/data
         environment:
