@@ -4,7 +4,6 @@ $user = 'postgres';
 $password = 'example';
 $name = '太田美香';
 $age = 32;
-$email = 'sample6@sample6.com';
 
 try {
   $dbh = new PDO($dsn, $user, $password);
