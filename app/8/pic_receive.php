@@ -2,17 +2,16 @@
 $err = array();
 $img = $_FILES['img'];
 var_dump($img);
-// $type = exif_imagetype($img['tmp_name']);
-// if ($type !== IMAGETYPE_JPEG && $type !== IMAGETYPE_PNG) {
-//     $err['pic'] = '対象ファイルはPNGまたはJPGのみです。';
-// } elseif ($img['size'] > 204800) {
-//     $err['pic'] = 'ファイルサイズは200KB以下にしてください。';
-// } else {
-//     $extension = pathinfo($img['name'], PATHINFO_EXTENSION);
-//     $new_img = md5(uniqid(mt_rand(), true)). '.' .$extension;
-//     move_uploaded_file($img['tmp_name'], './img/' . $new_img);
-// }
-move_uploaded_file($img['tmp_name'], './img/' . $img['name']);
+$type = exif_imagetype($img['tmp_name']);
+if ($type !== IMAGETYPE_JPEG && $type !== IMAGETYPE_PNG) {
+    $err['pic'] = '対象ファイルはPNGまたはJPGのみです。';
+} elseif ($img['size'] > 204800) {
+    $err['pic'] = 'ファイルサイズは200KB以下にしてください。';
+} else {
+    $extension = pathinfo($img['name'], PATHINFO_EXTENSION);
+    $new_img = md5(uniqid(mt_rand(), true)). '.' .$extension;
+    move_uploaded_file($img['tmp_name'], './img/' . $new_img);
+}
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +30,7 @@ move_uploaded_file($img['tmp_name'], './img/' . $img['name']);
         foreach($err as $row) {
             echo '<p>'.$row.'</p>';
         }
-        echo '<a href="./sample8-3_send.php">戻る';
+        echo '<a href="./send.php">戻る</a>';
     } else {
     ?>
     <div><img src="http://localhost:9000/8/img/<?php echo $img['name']; ?>"></div>
